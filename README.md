@@ -20,8 +20,8 @@ Let's be incredibly generous and imagine a government entity builds a classified
 Time =  1.93×10<sup>63</sup> / 2.2×10<sup>17</sup>  ​≈ 8.77×10<sup>45</sup> seconds  
 Time to crack : <strong>Roughly 27×10<sup>38</sup> years.</strong>
 
-# **Pypasswd validation Engine**  
-*The Validation Engine* is a major component of **Pypasswd generator** and it is crucial for ensuring that generated passwords are secure and brute force resistant.   
+# **Pypasswd Validation Engine**  
+*The Validation Engine* is a major component of **Pypasswd Generator** and it is crucial for ensuring that generated passwords are secure and brute force resistant.   
 **The Overview of the validation process**  
 
 - CSPRNG Input Formation
@@ -45,7 +45,7 @@ Time to crack : <strong>Roughly 27×10<sup>38</sup> years.</strong>
 As oof June 2026 , the project is actively being developed and improved. Releases will be availabe as soon as the next month or even earlier. Testing will be done and some sample results will be released. I dont want my repo to breach generated passwords hence, ill not be releasing all test result images and insted a score and statistics will be released.
 
 # **Licencing & Rights**
-*Pypasswd Generator **Copyright 2026 aibhav Bhattacharya***   
+*Pypasswd Generator **Copyright 2026 Baibhav Bhattacharya***   
 *Pypasswd Generator* is licensed under the <a href="LICENSE">Apache 2.0 License</a>  
 It is completely free and open source for anyone to use and modify.
 
