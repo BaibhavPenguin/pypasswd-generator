@@ -81,7 +81,7 @@ try:
 
 
     print("\033[32mPypasswd Generator v1")
-    print(f"Generating {args.length} letter combinations in {args.bulk} iterations, verbose outbputs is set to {args.verbose}\033[0m")
+    print(f"Generating {args.length} letter combinations in {args.bulk} iterations, verbose outputs is set to {args.verbose}\033[0m")
     OutputList = []
     for iterations in range(0,args.bulk):
         
@@ -109,5 +109,7 @@ finally:
         print(f"Generated {len(OutputList)} records in {args.bulk} iterations.")
     else:
         print("No Session data gathered, Nothing to save...")
-# test case : #p9&46;7qW1!3nN/0{9=1Pb@Wq;7*gc
+
+
+
 
