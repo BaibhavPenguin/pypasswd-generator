@@ -12,17 +12,17 @@ CommonPasswordPatterns = {
 
 def MatchRegexPatterns(rules :str , data :str):
     match = parser.search(rules,data)
-    if match:
-        return 1
-    else:
-        return 0
+    return bool(match)
 
 def RunPatternMatchingTest(pswd :passwd.Password):
-    pswd.test_rating_sequential_analysis = 10
-    for pattern in CommonPasswordPatterns.keys():
-        pattern_occurence = MatchRegexPatterns(CommonPasswordPatterns[pattern],pswd.pwd)
-        if pattern_occurence == 1:
-            pswd.test_rating_sequential_analysis -= 2
-
-        
-   
+    pswd.test_rating_sequential_analysis = 0
+    PatternTestResult = []
+    for pattern in CommonPasswordPatterns.values():
+        pattern_occurence = MatchRegexPatterns(pattern,pswd.pwd)
+        PatternTestResult.append(pattern_occurence)
+    
+    for result in PatternTestResult:
+        if result == False:
+            pswd.test_rating_sequential_analysis += 2
+    
+    
