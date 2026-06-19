@@ -44,7 +44,41 @@ Time to crack : <strong>Roughly 27×10<sup>38</sup> years.</strong>
 # **Development Progress**
 As oof June 2026 , the project is actively being developed and improved. Development for V1 as been completed successfully and will be followed by a couple of bug fixes. V2 will focus on adding essential features like multiprocessing and multithreading, hashing and encrypted outputs and offilne first lookups.
 
-# **Licencing & Rights**
+# **Pypasswd from Anywhere**
+
+**Pypasswd Generator** is primarily available as a docker image so if you want to use it on your linux distro from anywhere , These commands given should be used for testing or small uses, for large scale integration it is recommended to pull the correct package. Look below in the **Downloads** section. 
+
+### **Linux**  
+`docker run --rm -t -e PYTHONBUFFERED=1 -v "$(pwd)":/app/output ghcr.io/baibhavpenguin/pypasswd-generator:latest`
+ 
+### **Windows PowerShell**  
+`docker run --rm -t -e PYTHONBUFFERED=1 -v "${PWD}":/app/output ghcr.io/baibhavpenguin/pypasswd-generator:latest`
+
+### **Windows Command Prompt**
+
+`docker run --rm -t -e PYTHONBUFFERED=1 -v "%cd%":/app/output ghcr.io/baibhavpenguin/pypasswd-generator:latest`
+
+### **WSL & Git Bash**  
+`docker run --rm -t -e PYTHONBUFFERED=1 -v "/$(pwd)":/app/output ghcr.io/baibhavpenguin/pypasswd-generator:latest`
+
+## **Download Pypasswd Generator**
+You can download **Pypasswd Generator** directly from GitHub or use the command given below for downloading the docker image instantly.
+
+`docker pull ghcr.io/baibhavpenguin/pypasswd-generatorlatest`
+
+*NOTE : Both methods require Docker to be installed, If youre running the script from source , please look at requirements.txt for resolving any dependency errors, However I recommend using Docker for maximum compatibility*
+
+# **How to use Pypasswd Generator**
+Startup arguments are necessary to specify length of password , maximum tries for password candidate generation and to enable or disable verbose outputs.
+
+- **--length**  : Specify length , takes a numeric value between 0 - 128
+- **--bulk**    : Specify total iterations , takes a numeric value between 0 - x
+- **--verbose** : Enable/Disable verbose outputs, use True/False
+
+Example :  
+`docker run --rm -t -e PYTHONBUFFERED=1 -v "$(pwd)":/app/output ghcr.io/baibhavpenguin/pypasswd-generator:latest --length 20 --bulk 2000 --verbose True`
+
+# **Licencing & Rights**  
 *Pypasswd Generator **Copyright 2026 Baibhav Bhattacharya***   
 *Pypasswd Generator* is licensed under the <a href="LICENSE">Apache 2.0 License</a>  
 It is completely free and open source for anyone to use and modify.

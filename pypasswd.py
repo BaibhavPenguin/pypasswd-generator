@@ -7,7 +7,7 @@ import brute_force_analysis as brute
 import password_generator as PassGen
 import pandas as pd
 import argparse as args
-
+import os
 
 
 args_size = 20
@@ -79,7 +79,8 @@ try:
     parser.add_argument("--verbose",type=bool,default=False,help="View Generation logs on the terminal.")
     args = parser.parse_args()
 
-
+    output_dir = "output"
+    os.makedirs(output_dir, exist_ok=True)
     print("\033[32mPypasswd Generator v1")
     print(f"Generating {args.length} letter combinations in {args.bulk} iterations, verbose outputs is set to {args.verbose}\033[0m")
     OutputList = []
@@ -103,8 +104,8 @@ finally:
     if OutputList:
         OutputFrame = pd.DataFrame(OutputList)
         OutputFrame.drop_duplicates()
-        OutputFrame.to_csv("session-passwords.csv",index=False)
-        OutputFrame.to_excel("session-passswords.xlsx",index=False)
+        OutputFrame.to_csv(f"{output_dir}/session-passwords.csv",index=False)
+        OutputFrame.to_excel(f"{output_dir}/session-passswords.xlsx",index=False)
         print("Session records saved in CSV & EXCEL formats")
         print(f"Generated {len(OutputList)} records in {args.bulk} iterations.")
     else:
