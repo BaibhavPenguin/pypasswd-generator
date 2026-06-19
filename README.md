@@ -1,8 +1,8 @@
 # **Pypasswd Generator** 
 The highly secure and reliable alternative for password generation.  
-**Pypasswd generator** is a python utility which is made for mass generation of unique and highly secure password combinations using a **Multi Step Valitadion Engine** and real world breach detection.
+**Pypasswd generator** is a cross platform alternative to <a href="https://github.com/BaibhavPenguin/rupasswd-generator">Rupasswd Generator</a> made for mass generation of unique and highly secure password combinations using a **Multi Step Valitadion Engine** and real world breach detection.
 
-**Pypasswd generator** is still in development as of June 2026 and docker images as well as zipped Python Scripts will be released.
+**Pypasswd generator** is still in development as of June 2026, Docker Images for V1 have been released, Check them out!
 
 ## **What does Pypasswd Generator do?**  
 **Pypasswd generator** automatically generates a dataset highly secure and unbreached password canditates using pesudo-random string generation and a multi step validation engine. It automatically detects common patterns , breached passwords , common dictionary words and basic password formation to output a password which is highly resistant to automated attacks like Brute-Forcing and Logical building.
@@ -28,7 +28,7 @@ Time to crack : <strong>Roughly 27×10<sup>38</sup> years.</strong>
 - Preliminary Tests
 - Pattern Matching 
 - Breach Detection
-- Dictionary Detection
+- Theoritical Brute Force Resistance Approximation
 - Output Generation & Cleaning
 
 **CSPRNG Input Formation** : Generates a Cryptographically Secure Random Number. 
@@ -39,10 +39,10 @@ Time to crack : <strong>Roughly 27×10<sup>38</sup> years.</strong>
 
 **Breach Detection** : Look for exact matches and similar matches in public breached password databases. To ensure that generated output isn't just availabe on some database.  
 
-**Dictionary Detection** : Detect for legible language in English, words like `password` ,`Tiger` , `personal` etc to prevent accurate gueeses and over the shoulder snooping.  
+**Theoritical Brute Force Resistance Approximation** : Approximate brute force resistance based on test data and filter stronger passwords from the weaker ones.  
 
 # **Development Progress**
-As oof June 2026 , the project is actively being developed and improved. Releases will be availabe as soon as the next month or even earlier. Testing will be done and some sample results will be released. I dont want my repo to breach generated passwords hence, ill not be releasing all test result images and insted a score and statistics will be released.
+As oof June 2026 , the project is actively being developed and improved. Development for V1 as been completed successfully and will be followed by a couple of bug fixes. V2 will focus on adding essential features like multiprocessing and multithreading, hashing and encrypted outputs and offilne first lookups.
 
 # **Licencing & Rights**
 *Pypasswd Generator **Copyright 2026 Baibhav Bhattacharya***   
