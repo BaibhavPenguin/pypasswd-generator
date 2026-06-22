@@ -1,5 +1,6 @@
 mod data_structure;
 mod input_gen;
+mod hasher;
 
 use std::env;
 use rusqlite::{Connection,Result};
@@ -37,17 +38,20 @@ fn main() -> Result<()> {
             crack_resistance REAL,
             is_valid BOOLEAN,
             is_breached BOOLEAN,
-            password_strength REAL
+            password_strength REAL,
+            prefix TEXT NOT NULL,
+            suffix TEXT NOT NULL
         );",
         (), // Empty tuple for no parameters
     )?;
 
     let transaction = database.transaction()?;
     
-    let mut statement = transaction.prepare("INSERT INTO data (password,length,classification_score,validation_score,crack_resistance,is_valid,is_breached,password_strength) VALUES (?1,?2,?3,?4,?5,?6,?7,?8)")?;
+    let mut statement = transaction.prepare("INSERT INTO data (password,length,classification_score,validation_score,crack_resistance,is_valid,is_breached,password_strength,prefix,suffix) VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9,?10)")?;
     for _ in 0..bulk {
         let passwd : String = csprng::generate_csprng_input(length as usize);
-        let password : PasswordCandidate = PasswordCandidate::new(passwd,length);
+        let mut password : PasswordCandidate = PasswordCandidate::new(passwd,length);
+        hasher::get_sha1_hashed_records(&mut password).expect("NoneType");
         statement.execute((password.string.clone(),
         password.string.chars().count() as u16,
         password.classification_score,
@@ -55,7 +59,9 @@ fn main() -> Result<()> {
         password.brute_force_resistance,
         password.is_valid.to_string(),
         password.is_breached.to_string(),
-        password.password_strength
+        password.password_strength,
+        password.prefix,
+        password.suffix
         ))?;
     }
     drop(statement);            //transaction is borrowed by statement hence it needs to be dropped before using transaction again - Self note dont do ts 

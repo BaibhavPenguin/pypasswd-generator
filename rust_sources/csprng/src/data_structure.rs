@@ -6,7 +6,9 @@ pub struct PasswordCandidate {
     pub brute_force_resistance : u16,
     pub is_valid : bool,
     pub is_breached : bool,
-    pub password_strength : u16
+    pub password_strength : u16,
+    pub prefix : String,
+    pub suffix : String
 }
 
 impl PasswordCandidate {
@@ -20,7 +22,9 @@ impl PasswordCandidate {
             brute_force_resistance : 0,
             is_valid : false,
             is_breached : false,
-            password_strength : 0
+            password_strength : 0,
+            prefix : " ".to_string(),
+            suffix : " ".to_string()
         }
     }
 }
