@@ -3,10 +3,12 @@ use fancy_regex::Regex;
 pub struct DatabaseFields {
     pub password : String,
     pub length : u16,
-    pub classification_score : f32,
+    pub has_lowercase : bool,
+    pub has_uppercase : bool ,
+    pub has_digits : bool ,
+    pub has_symbols : bool,
     pub validation_score : f32,
     pub crack_resistance : f32,
-    pub is_valid : String,
     pub password_strength : f32
 }
 

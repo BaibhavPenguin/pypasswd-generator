@@ -33,10 +33,12 @@ fn main() -> Result<()> {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             password TEXT NOT NULL,
             length INTEGER NOT NULL,
-            classification_score REAL,
+            has_lowercase BOOLEAN,
+            has_uppercase BOOOLEAN,
+            has_digits BOOLEAN,
+            has_symbols BOOLEAN,
             validation_score REAL,
             crack_resistance REAL,
-            is_valid BOOLEAN,
             is_breached BOOLEAN,
             password_strength REAL,
             prefix TEXT NOT NULL,
@@ -47,18 +49,20 @@ fn main() -> Result<()> {
 
     let transaction = database.transaction()?;
     
-    let mut statement = transaction.prepare("INSERT INTO data (password,length,classification_score,validation_score,crack_resistance,is_valid,is_breached,password_strength,prefix,suffix) VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9,?10)")?;
+    let mut statement = transaction.prepare("INSERT INTO data (password,length,has_lowercase,has_uppercase,has_digits,has_symbols,validation_score,crack_resistance,is_breached,password_strength,prefix,suffix) VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12)")?;
     for _ in 0..bulk {
         let passwd : String = csprng::generate_csprng_input(length as usize);
         let mut password : PasswordCandidate = PasswordCandidate::new(passwd,length);
         hasher::get_sha1_hashed_records(&mut password).expect("NoneType");
         statement.execute((password.string.clone(),
         password.string.chars().count() as u16,
-        password.classification_score,
+        password.has_lowercase,
+        password.has_uppercase,
+        password.has_digits,
+        password.has_symbols,
         password.validation_score,
         password.brute_force_resistance,
-        password.is_valid.to_string(),
-        password.is_breached.to_string(),
+        password.is_breached,
         password.password_strength,
         password.prefix,
         password.suffix
