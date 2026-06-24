@@ -22,7 +22,6 @@ pub fn get_database_fields(db_path: &String , local_storage: &mut Vec<DatabaseFi
 
     for data in extracted_data {
         let _data = data?;
-        println!("{}",_data.password);
         local_storage.push(_data);
     }
 

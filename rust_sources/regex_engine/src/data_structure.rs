@@ -7,8 +7,8 @@ pub struct DatabaseFields {
     pub has_uppercase : bool ,
     pub has_digits : bool ,
     pub has_symbols : bool,
-    pub validation_score : f32,
-    pub crack_resistance : f32,
+    pub validation_score : u16,
+    pub crack_resistance : u16,
     pub password_strength : f32
 }
 
@@ -47,7 +47,8 @@ impl RegexValidationPatterns {
             pattern_pass_b : Regex::new(r#"[!@#$%^&*(),.?\":{}|<>_+\-=\[\]\\\/]{2,}"#).unwrap(), 
             pattern_pass_c : Regex::new(r"[A-Z]{3,}").unwrap(),
             pattern_pass_d : Regex::new( r"(.)\1\1").unwrap(),
-            pattern_pass_e : Regex::new(r"(?:012|123|234|345|qwerty|asdfgh)").unwrap()
+            pattern_pass_e : Regex::new(r"(?:012|123|234|345|456|567|678|789|987|876|765|654|543|432|321|qwe|wer|ert|rty|tyu|iop|asd|sdf|dfg|fgh|ghj|hjk|jkl|zxc|xcv|cvb|vbn|bnm
+            |abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|opq|pqr|rst|stu|tuv|uvw|vwx|wxy|xyz)").unwrap()
         }
     }
 }
