@@ -1,8 +1,9 @@
-# **Pypasswd Generator** 
-The highly secure and reliable alternative for password generation.  
-**Pypasswd generator** is a cross platform alternative to <a href="https://github.com/BaibhavPenguin/rupasswd-generator">Rupasswd Generator</a> made for mass generation of unique and highly secure password combinations using a **Multi Step Valitadion Engine** and real world breach detection.
+# **Pypasswd Generator V2** 
+The highly secure and reliable credential generation & classification pipeline.  
+**Pypasswd Generator** is a containerised password generation and classificiation pipeline made for mass generation of unique and highly secure password combinations using a **Multi Step Valitadion Engine** made with Rust. It features real world breach detection using HIBP database. Pypasswd is intended for data analysis and large scale enterprise onboarding as it is capable of generating and validating upwards 2-3 million password combinations at once, even more if you're fine with waiting a significant amount of time for the breach test.
 
 **Pypasswd generator** is still in development as of June 2026, Docker Images for V1 have been released, Check them out!
+Check out the **Development Progress** section to see the current progress or check out the official **bypasswd toolchain** project.
 
 ## **What does Pypasswd Generator do?**  
 **Pypasswd generator** automatically generates a dataset highly secure and unbreached password canditates using pesudo-random string generation and a multi step validation engine. It automatically detects common patterns , breached passwords , common dictionary words and basic password formation to output a password which is highly resistant to automated attacks like Brute-Forcing and Logical building.
@@ -42,11 +43,14 @@ Time to crack : <strong>Roughly 27×10<sup>38</sup> years.</strong>
 **Theoritical Brute Force Resistance Approximation** : Approximate brute force resistance based on test data and filter stronger passwords from the weaker ones.  
 
 # **Development Progress**
-As oof June 2026 , the project is actively being developed and improved. Development for V1 as been completed successfully and will be followed by a couple of bug fixes. V2 will focus on adding essential features like multiprocessing and multithreading, hashing and encrypted outputs and offilne first lookups.
+June-July 2026, Pypasswd Generator V2 is in progress. The project was off-track because I decided to pull the redundant *Rupasswd Generator* repo and rewrite the crictcal parts for Pypassswd Generator in high performance rust code. The output has also been changed from spreadsheets and csv to a local SQL Database primarily.
+Now, the output generate is instantly usable and does not require further string/file processing, You can just use SQL to process the data as you like.
+I will release the final schema of the database and some example passwords with clear documenation if you ever want to use Pypasswd Generator or Integrate it.
+If you have any other questiosn , don't hesitate to hit me up on Linkedin or drop an issue here.
 
-# **Pypasswd from Anywhere**
+# **Pypasswd V1 from Anywhere**
 
-**Pypasswd Generator** is primarily available as a docker image so if you want to use it on your linux distro from anywhere , These commands given should be used for testing or small uses, for large scale integration it is recommended to pull the correct package. Look below in the **Downloads** section. 
+**Pypasswd Generator V1** is primarily available as a docker image so if you want to use it on your linux distro from anywhere , These commands given should be used for testing or small uses, for large scale integration it is recommended to pull the correct package. Look below in the **Downloads** section. 
 
 ### **Linux**  
 `docker run --rm -t -e PYTHONBUFFERED=1 -v "$(pwd)":/app/output ghcr.io/baibhavpenguin/pypasswd-generator:latest`
@@ -61,14 +65,14 @@ As oof June 2026 , the project is actively being developed and improved. Develop
 ### **WSL & Git Bash**  
 `docker run --rm -t -e PYTHONBUFFERED=1 -v "/$(pwd)":/app/output ghcr.io/baibhavpenguin/pypasswd-generator:latest`
 
-## **Download Pypasswd Generator**
+## **Download Pypasswd Generator V1**
 You can download **Pypasswd Generator** directly from GitHub or use the command given below for downloading the docker image instantly.
 
 `docker pull ghcr.io/baibhavpenguin/pypasswd-generatorlatest`
 
 *NOTE : Both methods require Docker to be installed, If youre running the script from source , please look at requirements.txt for resolving any dependency errors, However I recommend using Docker for maximum compatibility*
 
-# **How to use Pypasswd Generator**
+# **How to use Pypasswd Generator V1**
 Startup arguments are necessary to specify length of password , maximum tries for password candidate generation and to enable or disable verbose outputs.
 
 - **--length**  : Specify length , takes a numeric value between 0 - 128
